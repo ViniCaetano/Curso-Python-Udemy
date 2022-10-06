@@ -1,6 +1,24 @@
 import re
+from random import randint
 
-def retirar_pontuacao (cnpj):
+
+def gerador():
+    digitos = str(randint(10000000, 99999999))
+    return digitos + "0001"
+
+
+def acrescentar_pontuacao(novo_cnpj):
+    pergunta = input('Gerar CNPJ com pontuação? \n[S] Sim \n[N] Não\n')
+    if pergunta.upper() == 'S' or pergunta.upper() == 'SIM':
+        print(f'{novo_cnpj[:2]}.{novo_cnpj[2:5]}.{novo_cnpj[5:8]}/{novo_cnpj[8:12]}-{novo_cnpj[12:]}\n')
+    elif pergunta.upper() == 'N' or pergunta.upper() == 'NÃO':
+        print(f'{novo_cnpj}\n')
+    else:
+        print('Digite uma opção válida: Sim ou Não.\n')
+        acrescentar_pontuacao(novo_cnpj)
+
+
+def retirar_pontuacao(cnpj):
     return re.sub(r'[^0-9]', '', cnpj)
 
 
