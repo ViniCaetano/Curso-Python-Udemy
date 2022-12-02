@@ -1,3 +1,20 @@
+try:
+    import sys
+    import os
+
+    sys.path.append(
+        os.path.abspath(
+            os.path.join(
+                os.path.dirname(__file__),
+                '../Módulo'
+            )
+        )
+    )
+
+except:
+    raise
+
+
 import unittest
 from calculadora import Soma, Subtrai
 
@@ -57,5 +74,5 @@ class TestCalculadora(unittest.TestCase):
         with self.assertRaises(AssertionError):
             Subtrai(11, "0")
 
-
-unittest.main(verbosity=1)
+if __name__ == '__main__':
+    unittest.main(verbosity=1)
